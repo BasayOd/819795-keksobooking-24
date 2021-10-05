@@ -1,20 +1,19 @@
 
 function getRndInteger(min, max) {
   if (min<0||max<=min){
-    return false;
+    throw new Error('Диапазон неверен');
   }
   return Math.floor(Math.random() * (max - min) ) + min;
 }
 
-function getRandom(min, max) {
+function getRandom(min, max, num) {
   if (min<0||max<=min){
-    return false;
+    throw new Error('Диапазон неверен');
   }
-  return Math.random() * (max - min) + min;
+  let rand =  Math.random() * (max - min) + min;
+  return Number(rand.toFixed(num));
 }
 
-getRndInteger(10, 10);
+getRndInteger(9, 10);
 
-getRandom(3,6);
-
-
+getRandom(3,6, 1);
