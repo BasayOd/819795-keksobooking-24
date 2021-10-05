@@ -10,8 +10,8 @@ function getRandom(min, max, num) {
   if (min<0||max<=min){
     throw new Error('Диапазон неверен');
   }
-  let rand =  Math.random() * (max - min) + min;
-  return Number(rand.toFixed(num));
+  const RAND =  Math.random() * (max - min) + min;
+  return Number(RAND.toFixed(num));
 }
 
 getRndInteger(9, 10);
