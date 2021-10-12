@@ -35,8 +35,8 @@ const PHOTOURL = [
 
 const createRandArrayFromUniq = (array) =>{
   const arr = array.slice();
-  const newArray = Array.from({length: getRndInteger(1, array.length+1)},
-    () => arr.splice(getRndInteger(0, arr.length), 1).toString());
+  const newArray = Array.from({length: getRndInteger(1, array.length)},
+    () => arr.splice(getRndInteger(0, arr.length-1), 1).toString());
   return newArray;
 };
 
@@ -83,4 +83,6 @@ const createOffer = () => {
 Array.from({length:10}, createOffer);
 Array.from({length:10}, createLocation);
 Array.from({length:10}, createAuthor);
+
+console.log(Array.from({length:10}, createOffer));
 
