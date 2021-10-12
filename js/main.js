@@ -1,18 +1,17 @@
 
 
-function getRndInteger(min, max) {
-  if (min<0||max<=min){
-    throw new Error('Диапазон неверен');
-  }
-  return Math.floor(Math.random() * (max - min) ) + min;
+function getRndInteger(first, second) {
+  const lower = Math.ceil(Math.min(Math.abs(first), Math.abs(second)));
+  const upper = Math.floor(Math.max(Math.abs(first), Math.abs(second)));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
 }
 
-function getRandom(min, max, num) {
-  if (min<0||max<=min){
-    throw new Error('Диапазон неверен');
-  }
-  const rand =  Math.random() * (max - min) + min;
-  return Number(rand.toFixed(num));
+function getRandom(first, second, digits) {
+  const lower = Math.min(Math.abs(first), Math.abs(second));
+  const upper = Math.max(Math.abs(first), Math.abs(second));
+  const result = Math.random() * (upper - lower) + lower;
+  return result.toFixed(digits);
 }
 
 getRndInteger(9, 10);
@@ -58,7 +57,7 @@ const createAuthor = () =>{
 
 
 const createLocation = () =>({
-  lat: getRandom(35.65000, 35.70000, 5),
+  lat: getRandomPositiveFloat(35.65000, 35.70000, 5),
   lng: getRandom(139.70000, 139.80000, 5),
 });
 
