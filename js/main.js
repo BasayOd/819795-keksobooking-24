@@ -57,7 +57,7 @@ const createAuthor = () =>{
 
 
 const createLocation = () =>({
-  lat: getRandomPositiveFloat(35.65000, 35.70000, 5),
+  lat: getRandom(35.65000, 35.70000, 5),
   lng: getRandom(139.70000, 139.80000, 5),
 });
 
@@ -80,10 +80,7 @@ const createOffer = () => {
 };
 
 
-const offers = Array.from({length:10}, createOffer);
-const locations = Array.from({length:10}, createLocation);
-const authors = Array.from({length:10}, createAuthor);
+Array.from({length:10}, createOffer);
+Array.from({length:10}, createLocation);
+Array.from({length:10}, createAuthor);
 
-console.log(offers);
-console.log(locations);
-console.log(authors);
