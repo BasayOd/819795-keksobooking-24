@@ -84,5 +84,3 @@ Array.from({length:10}, createOffer);
 Array.from({length:10}, createLocation);
 Array.from({length:10}, createAuthor);
 
-console.log(Array.from({length:10}, createOffer));
-
