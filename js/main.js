@@ -95,11 +95,11 @@ const createOffer = (loc) => ({
 });
 
 const createObject = () => {
-  const loc = createLocation();
+  const location = createLocation();
   return {
     author: createAuthor(),
-    offer: createOffer(loc),
-    location: loc,
+    offer: createOffer(location),
+    location: location,
   };
 };
 Array.from({length:OBJECTS}, createObject);
