@@ -112,4 +112,5 @@ const createObject = () => {
     location,
   };
 };
+Array.from({length:OBJECTS}, createObject);
 
