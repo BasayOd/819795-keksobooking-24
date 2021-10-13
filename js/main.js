@@ -80,27 +80,27 @@ const createLocation = () =>({
 });
 
 
-const createOffer = () => {
+const createOffer = (loc) => ({
+  title : 'Сдам квартиру',
+  address : `${String(loc.lat) }, ${ String(loc.lng)}`,
+  price : getRndInteger(1, MAXPRICE),
+  type : TYPES [getRndInteger(0, TYPES.length-1)],
+  rooms : getRndInteger(1, MAXROOMS),
+  guests : getRndInteger(1, MAXGUESTS),
+  checkin : TIMES [getRndInteger(0, TIMES.length-1)],
+  checkout : TIMES [getRndInteger(0, TIMES.length-1)],
+  features : createRandArrayFromUniq(FEATURES),
+  description : 'Пушка, лучше не бывает',
+  photos : createRandArray(PHOTOURL),
+});
+
+const createObject = () => {
   const loc = createLocation();
   return {
-    title : 'Сдам квартиру',
-    address : `${String(loc.lat) }, ${ String(loc.lng)}`,
-    price : getRndInteger(1, MAXPRICE),
-    type : TYPES [getRndInteger(0, TYPES.length-1)],
-    rooms : getRndInteger(1, MAXROOMS),
-    guests : getRndInteger(1, MAXGUESTS),
-    checkin : TIMES [getRndInteger(0, TIMES.length-1)],
-    checkout : TIMES [getRndInteger(0, TIMES.length-1)],
-    features : createRandArrayFromUniq(FEATURES),
-    description : 'Пушка, лучше не бывает',
-    photos : createRandArray(PHOTOURL),
+    author: createAuthor(),
+    offer: createOffer(loc),
+    location: loc,
   };
 };
-
-const createObject = () => ({
-  author : createAuthor(),
-  offer : createOffer(),
-  location : createLocation(),
-});
 Array.from({length:OBJECTS}, createObject);
 
