@@ -11,7 +11,7 @@ function getRandom(first, second, digits) {
   const lower = Math.min(Math.abs(first), Math.abs(second));
   const upper = Math.max(Math.abs(first), Math.abs(second));
   const result = Math.random() * (upper - lower) + lower;
-  return result.toFixed(digits);
+  return Number(result.toFixed(digits));
 }
 
 getRndInteger(9, 10);
@@ -25,6 +25,22 @@ const TYPES = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 const TIMES = ['12:00', '13:00', '14:00'];
 
 const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+
+const MAXROOMS = 4;
+
+const MAXPRICE = 10000;
+
+const MAXGUESTS = 10;
+
+const MINLAT = 35.65000 ;
+
+const MAXLAT = 35.70000;
+
+const MINLNG = 139.70000;
+
+const MAXLNG = 139.80000;
+
+const OBJECTS = 10;
 
 
 const PHOTOURL = [
@@ -41,7 +57,7 @@ const createRandArrayFromUniq = (array) =>{
 };
 
 const createRandArray = (array) =>{
-  const newArray = Array.from({length: getRndInteger(1, 10)},
+  const newArray = Array.from({length: getRndInteger(1, array.length)},
     () => array[getRndInteger(0, array.length)]);
   return newArray;
 };
@@ -57,8 +73,8 @@ const createAuthor = () =>{
 
 
 const createLocation = () =>({
-  lat: getRandom(35.65000, 35.70000, 5),
-  lng: getRandom(139.70000, 139.80000, 5),
+  lat: getRandom(MINLAT, MAXLAT, 5),
+  lng: getRandom(MINLNG, MAXLNG, 5),
 });
 
 
@@ -67,10 +83,10 @@ const createOffer = () => {
   return {
     title : 'Сдам квартиру',
     address : `${String(loc.lat) }, ${ String(loc.lng)}`,
-    price : getRndInteger(1, 10000),
+    price : getRndInteger(1, MAXPRICE),
     type : TYPES [getRndInteger(0, TYPES.length-1)],
-    rooms : getRndInteger(1, 4),
-    guests : getRndInteger(1, 10),
+    rooms : getRndInteger(1, MAXROOMS),
+    guests : getRndInteger(1, MAXGUESTS),
     checkin : TIMES [getRndInteger(0, TIMES.length-1)],
     checkout : TIMES [getRndInteger(0, TIMES.length-1)],
     features : createRandArrayFromUniq(FEATURES),
@@ -79,8 +95,10 @@ const createOffer = () => {
   };
 };
 
-
-Array.from({length:10}, createOffer);
-Array.from({length:10}, createLocation);
-Array.from({length:10}, createAuthor);
+const createObject = () => ({
+  author : createAuthor(),
+  offer : createOffer(),
+  location : createLocation(),
+});
+Array.from({length:OBJECTS}, createObject);
 
