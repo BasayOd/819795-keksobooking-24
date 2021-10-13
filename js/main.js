@@ -40,6 +40,8 @@ const MINLNG = 139.70000;
 
 const MAXLNG = 139.80000;
 
+const ACCURACYFORDOT = 5;
+
 const OBJECTS = 10;
 
 
@@ -73,8 +75,8 @@ const createAuthor = () =>{
 
 
 const createLocation = () =>({
-  lat: getRandom(MINLAT, MAXLAT, 5),
-  lng: getRandom(MINLNG, MAXLNG, 5),
+  lat: getRandom(MINLAT, MAXLAT, ACCURACYFORDOT),
+  lng: getRandom(MINLNG, MAXLNG, ACCURACYFORDOT),
 });
 
 
