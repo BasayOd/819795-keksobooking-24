@@ -99,7 +99,7 @@ const createObject = () => {
   return {
     author: createAuthor(),
     offer: createOffer(location),
-    location: location,
+    location,
   };
 };
 Array.from({length:OBJECTS}, createObject);
