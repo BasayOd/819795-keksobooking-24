@@ -112,6 +112,4 @@ const createObject = () => {
     location,
   };
 };
-console.log (Array.from({length:OBJECTS}, createObject));
-console.log (Array.from({length:OBJECTS}, createObject));
-console.log (Array.from({length:OBJECTS}, createObject));
+
