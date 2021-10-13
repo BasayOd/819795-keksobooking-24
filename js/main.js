@@ -18,7 +18,7 @@ getRndInteger(9, 10);
 
 getRandom(3,6, 1);
 
-let authNumb = 0;
+let avatars;
 
 const TYPES = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 
@@ -44,6 +44,8 @@ const ACCURACYFORDOT = 5;
 
 const OBJECTS = 10;
 
+const MAXAVATARS = 10;
+
 
 const PHOTOURL = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
@@ -64,13 +66,21 @@ const createRandArray = (array) =>{
   return newArray;
 };
 
+const createArrayAvatars = (length) => {
+  avatars = [];
+  for ( let num=0; num<=length-1; num++) {
+    avatars[num] = `img/avatars/user${(num+1).toString().padStart(2, '0')}.png`;
+  }
+  return avatars;
+};
 
 const createAuthor = () =>{
-  const avatarPic = `img/avatars/user${authNumb.toString().padStart(2,'0')}.png`;
-  authNumb++;
-  return {
-    avatar: avatarPic,
-  };
+  if (!avatars || avatars.length===0){
+    createArrayAvatars(MAXAVATARS);
+    return avatars.splice(getRndInteger(0, avatars.length-1), 1).toString();
+  } else {
+    return avatars.splice(getRndInteger(0, avatars.length-1), 1).toString();
+  }
 };
 
 
@@ -102,5 +112,6 @@ const createObject = () => {
     location,
   };
 };
-Array.from({length:OBJECTS}, createObject);
-
+console.log (Array.from({length:OBJECTS}, createObject));
+console.log (Array.from({length:OBJECTS}, createObject));
+console.log (Array.from({length:OBJECTS}, createObject));
