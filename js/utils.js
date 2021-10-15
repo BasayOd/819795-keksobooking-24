@@ -80,13 +80,5 @@ const createOffer = (loc) => ({
   photos : createRandArray(PHOTOURL),
 });
 
-const createObject = () => {
-  const location = createLocation();
-  return {
-    author: createAuthor(),
-    offer: createOffer(location),
-    location,
-  };
-};
 
-export { createObject };
+export { createOffer, createLocation, createAuthor, createArrayAvatars, createRandArrayFromUniq, createRandArray, getRandom, getRndInteger };
