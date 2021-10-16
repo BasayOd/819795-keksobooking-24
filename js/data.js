@@ -1,3 +1,8 @@
+import {
+  createAuthor,
+  createLocation,
+  createOffer
+} from './utils.js';
 
 
 const TYPES = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
@@ -32,5 +37,13 @@ const PHOTOURL = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg.',
 ];
+const createObject = () => {
+  const location = createLocation();
+  return {
+    author: createAuthor(),
+    offer: createOffer(location),
+    location,
+  };
+};
 
-export { TYPES, TIMES, FEATURES, MAXROOMS, MAXPRICE, MAXGUESTS, MINLAT, MINLNG, MAXLAT, MAXLNG, ACCURACYFORDOT, OBJECTS, MAXAVATARS, PHOTOURL };
+export { TYPES, TIMES, FEATURES, MAXROOMS, MAXPRICE, MAXGUESTS, MINLAT, MINLNG, MAXLAT, MAXLNG, ACCURACYFORDOT, OBJECTS, MAXAVATARS, PHOTOURL, createObject };

@@ -80,5 +80,4 @@ const createOffer = (loc) => ({
   photos : createRandArray(PHOTOURL),
 });
 
-
 export { createOffer, createLocation, createAuthor, createArrayAvatars, createRandArrayFromUniq, createRandArray, getRandom, getRndInteger };
