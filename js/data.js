@@ -1,9 +1,11 @@
 import {
-  createAuthor,
-  createLocation,
-  createOffer
+  createRandArray,
+  createRandArrayFromUniq,
+  getRandom,
+  getRndInteger
 } from './utils.js';
 
+let avatars;
 
 const TYPES = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 
@@ -37,6 +39,46 @@ const PHOTOURL = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg.',
 ];
+
+const createArrayAvatars = (length) => {
+  avatars = [];
+  for ( let num=0; num<=length-1; num++) {
+    avatars[num] = `img/avatars/user${(num+1).toString().padStart(2, '0')}.png`;
+  }
+  return avatars;
+};
+
+const createAuthor = () =>{
+  if (!avatars || avatars.length===0){
+    createArrayAvatars(MAXAVATARS);
+    return avatars.splice(getRndInteger(0, avatars.length-1), 1).toString();
+  } else {
+    return avatars.splice(getRndInteger(0, avatars.length-1), 1).toString();
+  }
+};
+
+
+const createLocation = () =>({
+  lat: getRandom(MINLAT, MAXLAT, ACCURACYFORDOT),
+  lng: getRandom(MINLNG, MAXLNG, ACCURACYFORDOT),
+});
+
+
+const createOffer = (loc) => ({
+  title : 'Сдам квартиру',
+  address : `${String(loc.lat) }, ${ String(loc.lng)}`,
+  price : getRndInteger(1, MAXPRICE),
+  type : TYPES [getRndInteger(0, TYPES.length-1)],
+  rooms : getRndInteger(1, MAXROOMS),
+  guests : getRndInteger(1, MAXGUESTS),
+  checkin : TIMES [getRndInteger(0, TIMES.length-1)],
+  checkout : TIMES [getRndInteger(0, TIMES.length-1)],
+  features : createRandArrayFromUniq(FEATURES),
+  description : 'Пушка, лучше не бывает',
+  photos : createRandArray(PHOTOURL),
+});
+
+
 const createObject = () => {
   const location = createLocation();
   return {
@@ -46,4 +88,4 @@ const createObject = () => {
   };
 };
 
-export { TYPES, TIMES, FEATURES, MAXROOMS, MAXPRICE, MAXGUESTS, MINLAT, MINLNG, MAXLAT, MAXLNG, ACCURACYFORDOT, OBJECTS, MAXAVATARS, PHOTOURL, createObject };
+export { OBJECTS, createObject };
