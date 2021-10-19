@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Василий Литвиненко](https://up.htmlacademy.ru/javascript/24/user/819795).
-* Наставник: [Максим Прусаков](https://htmlacademy.ru/profile/hikikomori).
+* Наставник: [Максим Усиков](https://htmlacademy.ru/profile/id939693).
 
 ---
 
