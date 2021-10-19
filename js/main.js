@@ -1,7 +1,8 @@
+
 import {
-  OBJECTS,
-  createObject
-} from './data.js';
+  createNewObjectDiv
+} from './generate.js';
 
-Array.from({length:OBJECTS}, createObject);
+const newObject = createNewObjectDiv();
 
+document.querySelector('#map-canvas').appendChild(newObject);
