@@ -6,8 +6,8 @@ import {
 
 const object = createObject();
 
-const template = document.querySelector('#card');
-const card = template.content.cloneNode(true);
+const template = document.querySelector('#card').content.querySelector('.popup');
+const card = template.cloneNode(true);
 
 const createFeatures = () => {
   const featureContainer = card.querySelector('.popup__features');
