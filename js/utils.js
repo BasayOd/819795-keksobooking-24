@@ -23,7 +23,7 @@ const createRandArrayFromUniq = (array) =>{
 
 const createRandArray = (array) =>{
   const newArray = Array.from({length: getRndInteger(1, array.length)},
-    () => array[getRndInteger(0, array.length)]);
+    () => array[getRndInteger(0, array.length-1)]);
   return newArray;
 };
 
