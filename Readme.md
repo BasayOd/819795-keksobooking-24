@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Василий Литвиненко](https://up.htmlacademy.ru/javascript/24/user/819795).
-* Наставник: [Максим Усиков](https://htmlacademy.ru/profile/id939693).
+* Наставник: [Александр Тимоновский](https://htmlacademy.ru/profile/id768125).
 
 ---
 
