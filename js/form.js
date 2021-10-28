@@ -15,6 +15,10 @@ const room = form.querySelector('#room_number');
 
 const guests = form.querySelector('#capacity');
 
+const timeIn = form.querySelector('#timein');
+
+const timeOut = form.querySelector('#timeout');
+
 const getMinPrice = (key) => TYPES[key][2];
 
 const setDisabledGuests = (key) => {
@@ -45,6 +49,19 @@ function onFormChange (evt) {
   else if (evt.target.matches('#room_number'))
   {
     setDisabledGuests(room.value);
+  }
+  else if (evt.target.matches('#timein'))
+  {
+    timeOut.querySelector('option[selected]').removeAttribute('selected');
+
+    timeOut.querySelector(`option[value="${timeIn.value}"]`).setAttribute('selected', 'selected');
+
+
+  }else if (evt.target.matches('#timeout'))
+  {
+    timeIn.querySelector('option[selected]').removeAttribute('selected');
+
+    timeIn.querySelector(`option[value="${timeOut.value}"]`).setAttribute('selected', 'selected');
   }
 }
 
