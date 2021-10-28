@@ -20,14 +20,19 @@ const guests = form.querySelector('#capacity');
 const getMinPrice = (key) => TYPES[key][2];
 
 const setDisabledGuests = (key) => {
-  for (let i = 0; i<rooms.length; i++ ) {
-    guests.querySelector(`option[value="${i}"]`).setAttribute('disabled', 'disabled');
+  const guestOptions = guests.querySelectorAll('option');
+  if (guestOptions) {
+    guestOptions.forEach((guest) => {
+      guest.setAttribute('disabled', 'disabled');
+    });
   }
   rooms.forEach( (obj)=> {
     if ( obj.rooms === key){
-      for (let i = obj.guestMax; i>0; i-- ) {
-        guests.querySelector(`option[value="${i}"]`).removeAttribute('disabled');
-      }
+      guestOptions.forEach((guest) => {
+        if (guest.value < obj.guestMax && guest.value !== '0' ) {
+          guest.removeAttribute('disabled');
+        }
+      });
     }
     if (obj.rooms === key && obj.guestMax === '0'){
       guests.querySelector('option[value="0"]').removeAttribute('disabled');
