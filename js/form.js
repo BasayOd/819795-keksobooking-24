@@ -25,16 +25,16 @@ const setDisabledGuests = (key) => {
   const guestOptions = guests.querySelectorAll('option');
   if (guestOptions) {
     guestOptions.forEach((guest) => {
-      guest.setAttribute('disabled', 'disabled');
+      guest.disabled=true;
     });
   }
   guestOptions.forEach((guest) => {
-    if (guest.value < roomsObj[key] && guest.value !== '0' ) {
-      guest.removeAttribute('disabled');
+    if (guest.value <= roomsObj[key] && guest.value !== '0' ) {
+      guest.disabled=false;
     }
   });
   if (roomsObj[key] === '0'){
-    guests.querySelector('option[value="0"]').removeAttribute('disabled');
+    guests.querySelector('option[value="0"]').disabled=false;
   }
 };
 
@@ -52,16 +52,17 @@ function onFormChange (evt) {
   }
   else if (evt.target.matches('#timein'))
   {
-    timeOut.querySelector('option[selected]').removeAttribute('selected');
+    timeOut.querySelector('option[selected]').selected = false;
 
-    timeOut.querySelector(`option[value="${timeIn.value}"]`).setAttribute('selected', 'selected');
+    timeOut.querySelector(`option[value="${timeIn.value}"]`).selected = 'selected';
 
 
   }else if (evt.target.matches('#timeout'))
   {
-    timeIn.querySelector('option[selected]').removeAttribute('selected');
+    timeIn.querySelector('option[selected]').selected = false;
 
-    timeIn.querySelector(`option[value="${timeOut.value}"]`).setAttribute('selected', 'selected');
+    timeIn.querySelector(`option[value="${timeOut.value}"]`).selected = 'selected';
+
   }
 }
 
