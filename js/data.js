@@ -7,7 +7,7 @@ import {
 
 let avatars;
 
-const TYPES = [['palace', 'Дворец' ], ['flat', 'Квартира'], ['house', 'Дом'], ['bungalow', 'Бунгало'], ['hotel', 'Отель']];
+const TYPES = [['bungalow', 'Бунгало', 0], ['flat', 'Квартира', 1000], ['hotel', 'Отель', 3000],  ['house', 'Дом', 5000], ['palace', 'Дворец', 10000 ]];
 
 const TIMES = ['12:00', '13:00', '14:00'];
 
@@ -88,4 +88,7 @@ const createObject = () => {
   };
 };
 
-export { OBJECTS, createObject };
+const getMinPrice = (key) => TYPES[key][2];
+
+export { OBJECTS, createObject,  getMinPrice, TYPES };
+
