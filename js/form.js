@@ -53,16 +53,11 @@ function onFormChange (evt) {
   else if (evt.target.matches('#timein'))
   {
     timeOut.querySelector('option[selected]').selected = false;
-
     timeOut.querySelector(`option[value="${timeIn.value}"]`).selected = 'selected';
-
-
   }else if (evt.target.matches('#timeout'))
   {
     timeIn.querySelector('option[selected]').selected = false;
-
     timeIn.querySelector(`option[value="${timeOut.value}"]`).selected = 'selected';
-
   }
 }
 
