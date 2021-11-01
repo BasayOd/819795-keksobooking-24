@@ -20,4 +20,4 @@ form.addEventListener('change', onFormChange);
 
 setNonActive();
 
-//setActive();
+setActive();
