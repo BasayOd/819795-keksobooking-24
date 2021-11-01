@@ -5,7 +5,9 @@ import {
 
 import {
   form,
-  onFormChange
+  onFormChange,
+  setNonActive,
+  setActive
 } from './form.js';
 
 
@@ -16,4 +18,6 @@ document.querySelector('#map-canvas').appendChild(newObject);
 
 form.addEventListener('change', onFormChange);
 
+setNonActive();
 
+setActive();

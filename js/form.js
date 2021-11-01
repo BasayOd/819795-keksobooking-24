@@ -19,6 +19,14 @@ const timeIn = form.querySelector('#timein');
 
 const timeOut = form.querySelector('#timeout');
 
+const fieldSets = form.querySelectorAll('fieldset');
+
+const addForm = form.querySelector('.ad-form');
+
+const mapFilter = document.querySelector('.map__filters');
+
+const mapFilters = mapFilter.querySelectorAll('.map__filter');
+
 const getMinPrice = (key) => TYPES[key][2];
 
 const setDisabledGuests = (key) => {
@@ -39,27 +47,43 @@ const setDisabledGuests = (key) => {
 };
 
 
-function onFormChange (evt) {
-  if (evt.target.matches('#type'))
-  {
+const onFormChange = (evt)  => {
+  if (evt.target.matches('#type')) {
     const value = getMinPrice(type.selectedIndex);
     price.placeholder = value;
     price.min = value;
-  }
-  else if (evt.target.matches('#room_number'))
-  {
+  } else if (evt.target.matches('#room_number')) {
     setDisabledGuests(room.value);
-  }
-  else if (evt.target.matches('#timein'))
-  {
+  } else if (evt.target.matches('#timein')) {
     timeOut.querySelector('option[selected]').selected = false;
     timeOut.querySelector(`option[value="${timeIn.value}"]`).selected = 'selected';
-  }else if (evt.target.matches('#timeout'))
-  {
+  } else if (evt.target.matches('#timeout')) {
     timeIn.querySelector('option[selected]').selected = false;
     timeIn.querySelector(`option[value="${timeOut.value}"]`).selected = 'selected';
   }
-}
+};
 
-export { onFormChange, form};
+const setNonActive = () => {
+  addForm.classList.add('ad-form--disabled');
+  mapFilter.classList.add('ad-form--disabled');
+  mapFilters.forEach((fieldSet) => {
+    fieldSet.disabled = true;
+  });
+  fieldSets.forEach((fieldSet) => {
+    fieldSet.disabled = true;
+  });
+};
+
+const setActive = () => {
+  addForm.classList.remove('ad-form--disabled');
+  mapFilter.classList.remove('ad-form--disabled');
+  mapFilters.forEach((fieldSet) => {
+    fieldSet.disabled = false;
+  });
+  fieldSets.forEach((fieldSet) => {
+    fieldSet.disabled = false;
+  });
+};
+
+export { onFormChange, form, setNonActive, setActive };
 
