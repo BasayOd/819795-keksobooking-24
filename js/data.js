@@ -88,7 +88,6 @@ const createObject = () => {
   };
 };
 
-const getMinPrice = (key) => TYPES[key][2];
 
-export { OBJECTS, createObject,  getMinPrice, TYPES };
+export { OBJECTS, createObject,  TYPES };
 
