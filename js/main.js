@@ -67,11 +67,7 @@ const  createIcon = L.Icon.extend({
 });
 const icon = new createIcon();
 
-
 const array1 = Array.from({length:OBJECTS}, createObject);
-
-console.log (array1);
-
 
 array1.forEach((value)=> {
   L.marker([value.location.lat, value.location.lng], {icon: icon}).addTo(map).bindPopup(createNewObjectDiv(value));
