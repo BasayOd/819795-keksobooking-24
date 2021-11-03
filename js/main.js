@@ -15,6 +15,10 @@ import {
   createNewObjectDiv
 } from './generate.js';
 
+import {
+  mainMarker,
+  icon
+} from './pins.js';
 
 setNonActive();
 
@@ -34,38 +38,8 @@ L.tileLayer(
   },
 ).addTo(map);
 
-const mainPinIcon = L.icon({
-  iconUrl: 'img/main-pin.svg',
-  iconSize: [52, 52],
-  iconAnchor: [26, 52],
-});
+mainMarker.addTo(map);
 
-const marker = L.marker(
-  {
-    lat: 35.652832,
-    lng: 139.839478,
-  },
-  {
-    draggable: true,
-    icon: mainPinIcon,
-  },
-);
-
-marker.on('moveend', (evt) => {
-  form.querySelector('#address').value = `${evt.target.getLatLng().lat.toFixed(5)}, ${evt.target.getLatLng().lng.toFixed(5)}`;
-});
-
-
-marker.addTo(map);
-
-const  createIcon = L.Icon.extend({
-  options: {
-    iconUrl: 'img/pin.svg',
-    iconSize:     [40, 40],
-    iconAnchor:   [20, 40],
-  },
-});
-const icon = new createIcon();
 
 const array1 = Array.from({length:OBJECTS}, createObject);
 
