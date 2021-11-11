@@ -1,7 +1,5 @@
 
-
 const createNewObjectDiv  = (object) => {
-
   const template = document.querySelector('#card').content.querySelector('.popup');
   const card = template.cloneNode(true);
 
@@ -59,7 +57,7 @@ const createNewObjectDiv  = (object) => {
 
   const createType = () => {
     if (object.offer.type[1]) {
-      card.querySelector('.popup__type').textContent = object.offer.type[1];
+      card.querySelector('.popup__type').textContent = object.offer.type;
     } else {
       card.querySelector('.popup__type').remove();
     }
@@ -99,7 +97,7 @@ const createNewObjectDiv  = (object) => {
 
   const createAvatar = () => {
     if (object.author) {
-      card.querySelector('.popup__avatar').src = object.author;
+      card.querySelector('.popup__avatar').src = object.author.avatar;
     } else {
       card.querySelector('.popup__avatar').remove();
     }

@@ -7,6 +7,11 @@ function getRndInteger(first, second) {
   return Math.floor(result);
 }
 
+const isEscapeKey = (evt) => evt.keyCode === 27;
+
+const isEnterKey = (evt) => evt.key === 'Enter';
+
+
 function getRandom(first, second, digits) {
   const lower = Math.min(Math.abs(first), Math.abs(second));
   const upper = Math.max(Math.abs(first), Math.abs(second));
@@ -28,4 +33,4 @@ const createRandArray = (array) =>{
 };
 
 
-export { createRandArrayFromUniq, createRandArray, getRandom, getRndInteger };
+export { getRndInteger, getRandom, createRandArray, createRandArrayFromUniq, isEnterKey, isEscapeKey };

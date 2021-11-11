@@ -1,3 +1,6 @@
+import {showError} from './alerts.js';
+import {mainMarker, MAP_START_POSITION} from './pins.js';
+
 
 const TYPES = [['bungalow', 'Бунгало', 0], ['flat', 'Квартира', 1000], ['hotel', 'Отель', 3000],  ['house', 'Дом', 5000], ['palace', 'Дворец', 10000 ]];
 
@@ -26,6 +29,8 @@ const addForm = form.querySelector('.ad-form');
 const mapFilter = document.querySelector('.map__filters');
 
 const mapFilters = mapFilter.querySelectorAll('.map__filter');
+
+const resForm = form.querySelector('.ad-form__reset');
 
 const getMinPrice = (key) => TYPES[key][2];
 
@@ -85,5 +90,39 @@ const setActive = () => {
   });
 };
 
-export { onFormChange, form, setNonActive, setActive };
+const setUserFormSubmit = (onSuccess) => {
+  addForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const formData = new FormData(evt.target);
+
+    fetch(
+      ' https://24.javascript.pages.academy/keksobooking',
+      {
+        method: 'POST',
+        body: formData,
+      },
+    )
+      .then((response) => {
+        if (response.ok) {
+          onSuccess();
+        } else {
+          showError();
+        }
+      })
+      .catch(() => {
+        showError();
+      });
+  });
+};
+
+const setReset = () => {
+  mainMarker.setLatLng({lng:MAP_START_POSITION.lng, lat: MAP_START_POSITION.lat});
+  mapFilter.reset();
+};
+
+const setUserFormReset = () => {
+  resForm.addEventListener('click', setReset);
+};
+
+export { onFormChange, form, setNonActive, setActive, setUserFormSubmit, setUserFormReset };
 

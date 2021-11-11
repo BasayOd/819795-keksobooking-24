@@ -1,5 +1,10 @@
 import {form} from './form.js';
 
+const MAP_START_POSITION = {
+  lat: 35.652832,
+  lng: 139.839478,
+};
+
 
 const mainPinIcon = L.icon({           //основная иконка (красная)
   iconUrl: 'img/main-pin.svg',
@@ -8,18 +13,18 @@ const mainPinIcon = L.icon({           //основная иконка (крас
 });
 const mainMarker = L.marker(
   {
-    lat: 35.652832,
-    lng: 139.839478,
+    lat: MAP_START_POSITION.lat,
+    lng: MAP_START_POSITION.lng,
   },
   {
     draggable: true,
     icon: mainPinIcon,
   },
 );
+
 mainMarker.on('moveend', (evt) => {
   form.querySelector('#address').value = `${evt.target.getLatLng().lat.toFixed(5)}, ${evt.target.getLatLng().lng.toFixed(5)}`;
 });
-
 
 const  pinIcon = L.Icon.extend({          //иконки объектов (синие)
   options: {
@@ -31,4 +36,4 @@ const  pinIcon = L.Icon.extend({          //иконки объектов (си�
 const icon = new pinIcon();
 
 
-export {mainMarker, icon};
+export {mainMarker, icon, MAP_START_POSITION};
