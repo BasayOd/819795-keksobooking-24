@@ -33,6 +33,8 @@ const mapFilters = mapFilter.querySelectorAll('.map__filter');
 
 const resForm = form.querySelector('.ad-form__reset');
 
+const inputs = form.querySelectorAll('input');
+
 const getMinPrice = (key) => TYPES[key][2];
 
 const setDisabledGuests = (key) => {
@@ -96,6 +98,9 @@ const resetAll = (map) => {
   mainMarker.setLatLng({lng: MAP_START_POSITION.lng, lat: MAP_START_POSITION.lat});
   mapFilter.reset();
   map.closePopup();
+  inputs.forEach((value) => {
+    value.value = '';
+  });
 };
 
 const setUserFormReset = (map) => {
