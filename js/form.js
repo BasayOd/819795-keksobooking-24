@@ -90,7 +90,20 @@ const setActive = () => {
   });
 };
 
-const setUserFormSubmit = (onSuccess) => {
+
+const resetAll = (map) => {
+  mainMarker.setLatLng({lng: MAP_START_POSITION.lng, lat: MAP_START_POSITION.lat});
+  mapFilter.reset();
+  map.closePopup();
+};
+
+const setUserFormReset = (map) => {
+  resForm.addEventListener('click', () => {
+    resetAll(map);
+  });
+};
+
+const setUserFormSubmit = (onSuccess,  map) => {
   addForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const formData = new FormData(evt.target);
@@ -109,20 +122,14 @@ const setUserFormSubmit = (onSuccess) => {
           showError();
         }
       })
+      .then(() => {
+        resetAll(map);
+      })
       .catch(() => {
         showError();
       });
   });
 };
 
-const setReset = () => {
-  mainMarker.setLatLng({lng:MAP_START_POSITION.lng, lat: MAP_START_POSITION.lat});
-  mapFilter.reset();
-};
-
-const setUserFormReset = () => {
-  resForm.addEventListener('click', setReset);
-};
-
-export { onFormChange, form, setNonActive, setActive, setUserFormSubmit, setUserFormReset };
+export { onFormChange, form, setNonActive, setActive, setUserFormSubmit, setUserFormReset, resetAll };
 

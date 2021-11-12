@@ -20,11 +20,8 @@ getDataFromServer(map);
 
 form.addEventListener('change', onFormChange);
 
-setUserFormSubmit(showSuccess);
+setUserFormSubmit(showSuccess, map);
 
-
-setUserFormReset();
-
-map.closePopup();
+setUserFormReset(map);
 
 
