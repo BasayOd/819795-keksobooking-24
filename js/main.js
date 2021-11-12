@@ -1,51 +1,28 @@
 
 import {
   form,
-  onFormChange,
-  setNonActive,
-  setActive
+  onFormChange, setNonActive, setUserFormSubmit,setUserFormReset
 } from './form.js';
 
 import {
-  createObject,
-  OBJECTS
+  getDataFromServer
 } from './data.js';
 
-import {
-  createNewObjectDiv
-} from './generate.js';
+import {createMap} from './map.js';
+import { showSuccess} from './alerts.js';
 
-import {
-  mainMarker,
-  icon
-} from './pins.js';
+const OBJECT_COUNT = 10;
 
 setNonActive();
 
-const map = L.map('map-canvas')
-  .on('load', () => {
-    setActive();
-  } )
-  .setView({
-    lat: 35.652832,
-    lng: 139.839478,
-  }, 10);
+const map = createMap();
 
-L.tileLayer(
-  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-  {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  },
-).addTo(map);
-
-mainMarker.addTo(map);
-
-
-const array1 = Array.from({length:OBJECTS}, createObject);
-
-array1.forEach((value)=> {
-  L.marker([value.location.lat, value.location.lng], {icon: icon}).addTo(map).bindPopup(createNewObjectDiv(value));
-});
+getDataFromServer(map, OBJECT_COUNT);
 
 form.addEventListener('change', onFormChange);
+
+setUserFormSubmit(showSuccess, map);
+
+setUserFormReset(map);
+
 
