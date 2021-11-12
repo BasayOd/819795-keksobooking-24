@@ -1,5 +1,6 @@
 import {showError} from './alerts.js';
 import {mainMarker, MAP_START_POSITION} from './pins.js';
+import {URL} from './data.js';
 
 
 const TYPES = [['bungalow', 'Бунгало', 0], ['flat', 'Квартира', 1000], ['hotel', 'Отель', 3000],  ['house', 'Дом', 5000], ['palace', 'Дворец', 10000 ]];
@@ -109,7 +110,7 @@ const setUserFormSubmit = (onSuccess,  map) => {
     const formData = new FormData(evt.target);
 
     fetch(
-      ' https://24.javascript.pages.academy/keksobooking',
+      URL,
       {
         method: 'POST',
         body: formData,

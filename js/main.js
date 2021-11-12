@@ -11,12 +11,13 @@ import {
 import {createMap} from './map.js';
 import { showSuccess} from './alerts.js';
 
+const OBJECT_COUNT = 10;
 
 setNonActive();
 
 const map = createMap();
 
-getDataFromServer(map);
+getDataFromServer(map, OBJECT_COUNT);
 
 form.addEventListener('change', onFormChange);
 
