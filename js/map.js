@@ -1,5 +1,7 @@
 import {setActive} from './form.js';
-import {mainMarker, MAP_START_POSITION} from './pins.js';
+import { mainMarker, MAP_START_POSITION, setPins} from './pins.js';
+import {showNewErrorServer} from './alerts.js';
+import { URL_DATA, OBJECT_COUNT} from './data.js';
 
 
 const createMap = () => {
@@ -24,4 +26,18 @@ const createMap = () => {
 
   return map;
 };
-export {createMap};
+
+
+const getDataFromServer = (map) => {
+  fetch(URL_DATA)
+    .then((response) => response.json())
+    .then((data) => {
+      setPins(map, data, OBJECT_COUNT);
+    })
+    .catch(() => {
+      showNewErrorServer();
+    });
+};
+
+
+export { getDataFromServer, createMap};

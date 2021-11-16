@@ -1,22 +1,12 @@
-import {icon} from './pins.js';
-import {createNewObjectDiv} from './generate.js';
-import {showNewErrorServer} from './alerts.js';
-
 const URL_DATA = 'https://24.javascript.pages.academy/keksobooking/data';
 
 const URL = 'https://24.javascript.pages.academy/keksobooking';
 
-const getDataFromServer = (map, objectsCount) => {
-  fetch(URL_DATA)
-    .then((response) => response.json())
-    .then((data) => {
-      data.slice(0, objectsCount).forEach((value) => {
-        L.marker([value.location.lat, value.location.lng], {icon: icon}).addTo(map).bindPopup(createNewObjectDiv(value));
-      });
-    }).catch(() => {
-      showNewErrorServer();
-    });
-};
+const TYPES = [['bungalow', 'Бунгало', 0], ['flat', 'Квартира', 1000], ['hotel', 'Отель', 3000],  ['house', 'Дом', 5000], ['palace', 'Дворец', 10000 ]];
+
+const OBJECT_COUNT = 10;
+
+const roomsObj = {'1' : '1', '2' : '2', '3' : '3', '100' : '0'};
 
 
-export {getDataFromServer, URL};
+export {URL, URL_DATA, OBJECT_COUNT, TYPES, roomsObj};

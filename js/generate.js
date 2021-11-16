@@ -1,3 +1,4 @@
+import {TYPES} from './data.js';
 
 const createNewObjectDiv  = (object) => {
   const template = document.querySelector('#card').content.querySelector('.popup');

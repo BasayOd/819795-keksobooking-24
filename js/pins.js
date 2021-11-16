@@ -1,4 +1,8 @@
 import {form} from './form.js';
+import {createNewObjectDiv} from './generate.js';
+import {sortData} from './sort.js';
+
+const array = [];
 
 const MAP_START_POSITION = {
   lat: 35.652832,
@@ -35,5 +39,19 @@ const  pinIcon = L.Icon.extend({          //иконки объектов (си�
 });
 const icon = new pinIcon();
 
+const removeMarkers = () => {
+  array.forEach((marker)=>{
+    marker.remove();
+  });
+};
 
-export {mainMarker, icon, MAP_START_POSITION};
+
+const setPins = (map, data, objectsCount) => {
+  const sorted = sortData(data);
+  sorted.slice(0, objectsCount).forEach((value) => {
+    array.push(L.marker([value.location.lat, value.location.lng], {icon: icon}));
+    array[array.length-1].addTo(map).bindPopup(createNewObjectDiv(value));
+  });
+};
+
+export {mainMarker, icon, MAP_START_POSITION, setPins, removeMarkers, array};
