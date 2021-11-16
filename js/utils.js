@@ -10,7 +10,6 @@ function getRndInteger(first, second) {
 const isEscapeKey = (evt) => evt.keyCode === 27;
 
 
-
 function getRandom(first, second, digits) {
   const lower = Math.min(Math.abs(first), Math.abs(second));
   const upper = Math.max(Math.abs(first), Math.abs(second));

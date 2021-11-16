@@ -2,7 +2,11 @@ const URL_DATA = 'https://24.javascript.pages.academy/keksobooking/data';
 
 const URL = 'https://24.javascript.pages.academy/keksobooking';
 
-const TYPES = [['bungalow', 'Бунгало', 0], ['flat', 'Квартира', 1000], ['hotel', 'Отель', 3000],  ['house', 'Дом', 5000], ['palace', 'Дворец', 10000 ]];
+const TYPES = [{type: 'bungalow', onrus: 'Бунгало', price : 0},
+  {type: 'flat', onrus:'Квартира', price : 1000},
+  {type: 'hotel', onrus:'Отель', price : 3000},
+  {type: 'house', onrus:'Дом', price: 5000},
+  {type: 'palace', onrus:'Дворец', price: 10000 }];
 
 const OBJECT_COUNT = 10;
 

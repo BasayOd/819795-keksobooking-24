@@ -56,9 +56,14 @@ const createNewObjectDiv  = (object) => {
     }
   };
 
+  const filterByType = (type) => {
+    const obj = TYPES.filter((value) => value.type === type);
+    return obj[0].onrus;
+  };
+
   const createType = () => {
-    if (object.offer.type[1]) {
-      card.querySelector('.popup__type').textContent = object.offer.type;
+    if (object.offer.type) {
+      card.querySelector('.popup__type').textContent = filterByType(object.offer.type);
     } else {
       card.querySelector('.popup__type').remove();
     }

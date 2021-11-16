@@ -1,12 +1,6 @@
 import {showError} from './alerts.js';
 import {mainMarker, MAP_START_POSITION} from './pins.js';
-import {URL, TYPES, roomsObj} from './data.js';
-
-
-//const TYPES = [['bungalow', 'Бунгало', 0], ['flat', 'Квартира', 1000], ['hotel', 'Отель', 3000],  ['house', 'Дом', 5000], ['palace', 'Дворец', 10000 ]];
-
-
-//const roomsObj = {'1' : '1', '2' : '2', '3' : '3', '100' : '0'}; // rooms : max guests
+import {URL, roomsObj, TYPES} from './data.js';
 
 
 const form = document.querySelector('.notice');
@@ -34,7 +28,7 @@ const mapFilters = mapFilter.querySelectorAll('.map__filter');
 
 const inputs = form.querySelectorAll('input');
 
-const getMinPrice = (key) => TYPES[key][2];
+const getMinPrice = (key) => TYPES[key].price;
 
 const setDisabledGuests = (key) => {
   const guestOptions = guests.querySelectorAll('option');

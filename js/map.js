@@ -33,6 +33,7 @@ const getDataFromServer = (map) => {
     .then((response) => response.json())
     .then((data) => {
       setPins(map, data, OBJECT_COUNT);
+      console.log(data);
     })
     .catch(() => {
       showNewErrorServer();
