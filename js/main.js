@@ -14,9 +14,8 @@ import {
 import { showSuccess} from './alerts.js';
 
 import {removeMarkers} from './pins.js';
-import {debounce} from './utils/debounce.js';
 
-debounce();
+import {setListenersForSort} from './sort.js';
 
 
 setNonActive();
@@ -28,34 +27,7 @@ getDataFromServer(map);
 
 form.addEventListener('change', onFormChange);
 
-const sort = document.querySelector('.map__filters');
-
-const sorts = sort.querySelectorAll('select');
-
-const filters = sort.querySelectorAll('input');
-
-const setListerForFilters = (div) => {
-  div.forEach((value)=>{
-    value.addEventListener('change',() => {
-      removeMarkers();
-      getDataFromServer(map);
-    });
-  });
-};
-
-sorts.forEach((value)=>{
-  value.addEventListener('change',() => {
-    removeMarkers();
-    getDataFromServer(map);
-  });
-});
-
-filters.forEach((value)=>{
-  value.addEventListener('change',() => {
-    removeMarkers();
-    getDataFromServer(map);
-  });
-});
+setListenersForSort(map);
 
 form.querySelector('.ad-form__reset').addEventListener('click', () => {
   removeMarkers();

@@ -8,5 +8,7 @@ const OBJECT_COUNT = 10;
 
 const roomsObj = {'1' : '1', '2' : '2', '3' : '3', '100' : '0'};
 
+const TIMEOUT = 500;
 
-export {URL, URL_DATA, OBJECT_COUNT, TYPES, roomsObj};
+
+export {URL, URL_DATA, OBJECT_COUNT, TYPES, roomsObj, TIMEOUT};

@@ -1,3 +1,28 @@
+import {removeMarkers} from './pins.js';
+import {debounce} from './utils/debounce.js';
+
+import {getDataFromServer} from './map.js';
+import {TIMEOUT} from './data.js';
+
+const sort = document.querySelector('.map__filters');
+
+const sorts = sort.querySelectorAll('select');
+
+const filters = sort.querySelectorAll('input');
+
+const setListerForElement = (div, map) => {
+  div.forEach((value)=>{
+    value.addEventListener('change', debounce(() => {
+      removeMarkers();
+      getDataFromServer(map);
+    }, TIMEOUT));
+  });
+};
+
+const setListenersForSort = (map) =>{
+  setListerForElement(sorts, map);
+  setListerForElement(filters, map);
+};
 
 
 const checkPrice = (price, priceStr) => {
@@ -64,4 +89,4 @@ const sortData = (data) => {
   return dataSort;
 };
 
-export {sortData};
+export {sortData, setListenersForSort};
