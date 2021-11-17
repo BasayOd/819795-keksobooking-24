@@ -1,7 +1,7 @@
 import {setActive} from './form.js';
-import { mainMarker, MAP_START_POSITION, setPins} from './pins.js';
+import { mainMarker, setPins} from './pins.js';
 import {showNewErrorServer} from './alerts.js';
-import { URL_DATA, OBJECT_COUNT} from './data.js';
+import { URL_DATA, OBJECT_COUNT, MAP_START_POSITION} from './data.js';
 
 
 const createMap = () => {

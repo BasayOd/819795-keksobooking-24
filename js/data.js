@@ -14,5 +14,11 @@ const roomsObj = {'1' : '1', '2' : '2', '3' : '3', '100' : '0'};
 
 const TIMEOUT = 500;
 
+const MAP_START_POSITION = {
+  lat: 35.652832,
+  lng: 139.839478,
+};
 
-export {URL, URL_DATA, OBJECT_COUNT, TYPES, roomsObj, TIMEOUT};
+
+export {URL, URL_DATA, OBJECT_COUNT, TYPES, roomsObj, TIMEOUT, MAP_START_POSITION};
+

@@ -1,9 +1,11 @@
 import {showError} from './alerts.js';
-import {mainMarker, MAP_START_POSITION} from './pins.js';
-import {URL, roomsObj, TYPES} from './data.js';
+import {mainMarker} from './pins.js';
+import {URL, roomsObj, TYPES, MAP_START_POSITION} from './data.js';
 
 
 const form = document.querySelector('.notice');
+
+const address = form.querySelector('#address');
 
 const type =form.querySelector('#type');
 
@@ -94,6 +96,7 @@ const resetAll = (map) => {
   inputs.forEach((value) => {
     value.value = '';
   });
+  address.value = `${String(MAP_START_POSITION.lng)}, ${String(MAP_START_POSITION.lat)}`;
 };
 
 

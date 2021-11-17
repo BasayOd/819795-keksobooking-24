@@ -1,13 +1,9 @@
 import {form} from './form.js';
 import {createNewObjectDiv} from './generate.js';
 import {sortData} from './sort.js';
+import {MAP_START_POSITION} from './data.js';
 
-const array = [];
-
-const MAP_START_POSITION = {
-  lat: 35.652832,
-  lng: 139.839478,
-};
+const arrayForPins = [];
 
 
 const mainPinIcon = L.icon({           //основная иконка (красная)
@@ -40,7 +36,7 @@ const  pinIcon = L.Icon.extend({          //иконки объектов (си�
 const icon = new pinIcon();
 
 const removeMarkers = () => {
-  array.forEach((marker)=>{
+  arrayForPins.forEach((marker)=>{
     marker.remove();
   });
 };
@@ -49,9 +45,9 @@ const removeMarkers = () => {
 const setPins = (map, data, objectsCount) => {
   const sorted = sortData(data);
   sorted.slice(0, objectsCount).forEach((value) => {
-    array.push(L.marker([value.location.lat, value.location.lng], {icon: icon}));
-    array[array.length-1].addTo(map).bindPopup(createNewObjectDiv(value));
+    arrayForPins.push(L.marker([value.location.lat, value.location.lng], {icon: icon}));
+    arrayForPins[arrayForPins.length-1].addTo(map).bindPopup(createNewObjectDiv(value));
   });
 };
 
-export {mainMarker, icon, MAP_START_POSITION, setPins, removeMarkers, array};
+export {mainMarker, icon, MAP_START_POSITION, setPins, removeMarkers};

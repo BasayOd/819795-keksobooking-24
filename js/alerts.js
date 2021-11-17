@@ -16,26 +16,23 @@ const error = templateError.cloneNode(true);
 const onPopupEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     if (body.lastChild === error) {
-      closeErrorWindow();
+      closeWindow(error);
     }else if (body.lastChild === success) {
-      closeSuccessWindow();
+      closeWindow(success);
     }
   }
 };
 
-function closeSuccessWindow () {
-  body.removeChild(success);
+function closeWindow (node) {
+  if (body.lastChild === node){
+    body.removeChild(node);}
   body.removeEventListener('keydown', onPopupEscKeydown);
 }
 
-function closeErrorWindow () {
-  body.removeChild(error);
-  body.removeEventListener('keydown', onPopupEscKeydown);
-}
 
 const showSuccess  = () => {
   body.appendChild(success);
-  success.addEventListener('click', closeSuccessWindow);
+  success.addEventListener('click', () =>closeWindow(success));
   body.addEventListener('keydown', onPopupEscKeydown);
 };
 
@@ -48,7 +45,7 @@ const showNewErrorServer  = () => {
 
 const showError = () => {
   body.appendChild(error);
-  error.addEventListener('click', closeErrorWindow);
+  error.addEventListener('click', () =>closeWindow(error));
   body.addEventListener('keydown', onPopupEscKeydown);
 
 };
